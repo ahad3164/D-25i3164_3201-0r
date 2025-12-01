@@ -236,7 +236,7 @@
         <div class="service">Service</div>
         <div class="shop">Shop</div>
         <div class="tracker">Tracker</div>
-        <button class="signup-btn">Sign Up</button>
+        <button class="signup-btn">Sign In</button>
       </div>
     </nav>
     <main class="container">
@@ -275,7 +275,7 @@
       </div>
 
       <p class="signup-text">
-        Don’t have an account? <a href="signup.html">Sign up</a>.
+        Don’t have an account? <a href="signin.html">Sign In</a>.
       </p>
     </main>
 
@@ -325,12 +325,41 @@
         window.location.href = "fitness-track.html";
       });
       document.querySelector(".signup-btn").addEventListener("click", () => {
-        window.location.href = "signup.html";
+        window.location.href = "signin.html";
       });
-      document.querySelector(".search-btn").onclick = () => {
-        alert("Search clicked!");
-      };
-      document.querySelector("nav a[href='#home']").onclick();
+
+      // Password visibility toggle
+      const showBtn = document.querySelector(".show-btn");
+      const passwordInput = document.querySelector("input[type='password']");
+      if (showBtn && passwordInput) {
+        showBtn.addEventListener("click", function() {
+          if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            showBtn.textContent = "Hide";
+          } else {
+            passwordInput.type = "password";
+            showBtn.textContent = "Show";
+          }
+        });
+      }
+
+      // Sign In Button Handler with Console Logging
+      const signInBtn = document.querySelector("button.btn");
+      const signInBtns = document.querySelectorAll("button.btn");
+      if (signInBtns.length > 0) {
+        signInBtns[0].addEventListener("click", function() {
+          const username = document.querySelector("input[placeholder='User Name']").value;
+          const password = document.querySelector("input[placeholder='Password']").value;
+          const rememberMe = document.querySelector("input[type='checkbox']").checked;
+
+          // CONSOLE LOG 4: Sign-in Attempt Logging (Sign-in Page)
+          console.log("Sign-in Attempt Details:");
+          console.log("Username:", username);
+          console.log("Password length:", password.length + " characters");
+          console.log("Remember me:", rememberMe);
+          console.log("Timestamp:", new Date().toLocaleString());
+        });
+      }
     </script>
   </body>
 </html>
