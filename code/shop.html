@@ -226,7 +226,7 @@
         <div class="service">Service</div>
         <div class="shop">Shop</div>
         <div class="tracker">Tracker</div>
-        <button class="signup-btn">Sign Up</button>
+        <button class="signup-btn">Sign In</button>
       </div>
     </nav>
     <main class="shop-container">
@@ -339,12 +339,21 @@
         window.location.href = "fitness-track.html";
       });
       document.querySelector(".signup-btn").addEventListener("click", () => {
-        window.location.href = "signup.html";
+        window.location.href = "signin.html";
       });
-      document.querySelector(".search-btn").onclick = () => {
-        alert("Search clicked!");
-      };
-      document.querySelector("nav a[href='#home']").onclick();
+
+      // ALERT 1: Product Added to Cart (Shop Page)
+      const addButtons = document.querySelectorAll(".add-btn");
+      addButtons.forEach((button, index) => {
+        button.addEventListener("click", function() {
+          const productName = this.parentElement.querySelector(".product-name").textContent.split("\n")[0];
+          const productPrice = this.parentElement.querySelector(".product-name").textContent.split("\n")[1];
+          alert(`✓ ${productName} ${productPrice} added to cart successfully!`);
+          
+          // CONSOLE LOG 1: Product Selection Details (Shop Page)
+          console.log(`Product Selected: ${productName} | Price: ${productPrice} | Item ID: ${index + 1}`);
+        });
+      });
     </script>
   </body>
 </html>
